@@ -1,0 +1,4 @@
+depthai >=2.26.0.0
+opencv-python
+numpy<2; python_version< "3.9"
+numpy; python_version >="3.9"
