@@ -6,7 +6,7 @@ TcpReceiver: TCP client thread, responsible for receiving instructions from the 
 2. Functional Modules
 Visual Processing Module: 
 Obtain RGB and depth images using the DepthAI/OAKD camera 
-The YOLO model is used for detecting 6 types of tools (such as air switches, contactors, hammers, etc.) 
+The YOLO model is used for detecting various tools (such as circuit breakers, contactors, hammers, etc.) 
 The three-dimensional spatial coordinates of the calculation tool (X, Y, Z) 
 Mechanical Arm Control Module: 
 Send control instructions via serial port 
