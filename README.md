@@ -1,31 +1,29 @@
-Core Architecture
-1. Multi-threading Design
-MyThread: The main processing thread, responsible for camera data acquisition, YOLO target detection, and spatial coordinate calculation 
-SerialReceiver: Serial communication thread, controlling the robotic arm to perform actions 
-TcpReceiver: TCP client thread, responsible for receiving instructions from the server 
-2. Functional Modules
-Visual Processing Module: 
-Obtain RGB and depth images using the DepthAI/OAKD camera 
-The YOLO model is used for detecting various tools (such as circuit breakers, contactors, hammers, etc.) 
-The three-dimensional spatial coordinates of the calculation tool (X, Y, Z) 
-Mechanical Arm Control Module: 
-Send control instructions via serial port 
-Support multiple operations: Grab (Q), Place (F), Set (Set), Reset (Reset) 
-Emergency stop function (such as Zscram and other safety instructions) 
-Communication module: 
-The TCP client connects to the server to receive instructions. 
-Serial port communication controls the mechanical arm hardware 
-3. Work Flow
-The camera conducts real-time detection and calculates 3D coordinates 
-After the user selects the target tool, they click the operation button. 
-Convert the coordinates into mechanical arm control instructions (in MOV format) 
-Send instructions via serial port to control the movements of the robotic arm 
-Receive the feedback status from the mechanical arm and display it 
-4. UI Interface
-Real-time display of detection images and recognition results 
-Tool Selection Drop-down Menu 
-Various control buttons (start, stop, grab, place, etc.) 
-Status display text box 
-5. Data Flow
-Camera → YOLO Detection → Coordinate Calculation → Instruction Conversion → Serial Port Transmission → Mechanical Arm Execution → Status Feedback → UI Display 
-The system has achieved a complete automated process from visual detection to mechanical arm control, and is applicable to scenarios involving tool grasping and placement.
+1. 多线程设计
+MyThread：主处理线程，负责相机数据采集、YOLO 目标检测以及空间坐标计算
+SerialReceiver：串行通信线程，控制机械臂执行动作
+TcpReceiver：TCP 客户端线程，负责接收来自服务器的指令2. 功能模块
+2.视觉处理模块：
+使用 DepthAI/OAKD 相机获取 RGB 和深度图像
+使用 YOLO 模型检测多种工具（如断路器、接触器、锤子等）
+计算工具的三维空间坐标（X、Y、Z）
+3.机械臂控制模块：
+通过串口发送控制指令
+支持多种操作：抓取（Q）、放置（F）、设置（Set）、复位（Reset）
+紧急停止功能（如 Zscram 等安全指令）
+4.通信模块：
+TCP 客户端连接到服务器以接收指令。
+串口通信控制机械臂硬件
+5. 工作流程
+该摄像机进行实时检测并计算出三维坐标
+用户选择目标工具后，点击操作按钮。
+将坐标转换为机械臂控制指令（以 MOV 格式）
+通过串行端口发送指令以控制机械臂的移动
+接收机械臂的反馈状态并显示出来
+6. 用户界面
+实时显示检测图像及识别结果
+工具选择下拉菜单
+各种控制按钮（启动、停止、抓取、放置等）
+状态显示文本框
+7. 数据流
+摄像头 → YOLO 检测 → 坐标计算 → 指令转换 → 串口传输 → 机械臂执行 → 状态反馈 → 用户界面显示
+该系统实现了从视觉检测到机械臂控制的完整自动化流程，并适用于涉及工具抓取和放置的场景。
